@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videoclipuri - Clujul Meu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        nav {
+            background: linear-gradient(90deg, #800000, #ff5733);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav, .container, footer {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: auto;
+        }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        footer {
+            background: linear-gradient(90deg, #333, #555);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.opacity = 1;
+            setTimeout(() => {
+                document.querySelectorAll("nav, .container, footer").forEach(element => {
+                    element.style.opacity = 1;
+                });
+            }, 300); // Delay to ensure body fade completes first
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="videos.html">Videoclipuri</a>
+        <a href="projects.html">Proiecte</a>
+        <a href="about.html">Despre mine</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Videoclipurile mele</h1>
+        <p>Toate videoclipurile publicate pe canalul Clujul Meu</p>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Clujul Meu | <a href="https://www.youtube.com/@Clujulmeu" target="_blank">YouTube</a></p>
+    </footer>
+</body>
+</html>

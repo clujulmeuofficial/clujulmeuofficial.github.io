@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clujul Meu - YouTube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            transition: opacity 0.5s ease-in-out;
+        }
+        nav {
+            background: #800000;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: auto;
+        }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.opacity = 1;
+        });
+    </script>
+</head>
+<body style="opacity: 0;">
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="videos.html">Videoclipuri</a>
+        <a href="projects.html">Proiecte</a>
+        <a href="about.html">Despre mine</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Bun venit la Clujul Meu!</h1>
+        <p>Explorăm Clujul prin videoclipurile noastre.</p>
+        
+        <h2>Showreel</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/YOUR_SHOWREEL_VIDEO_ID" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Clujul Meu | <a href="https://www.youtube.com/@Clujulmeu" target="_blank">YouTube</a></p>
+    </footer>
+</body>
+</html>
