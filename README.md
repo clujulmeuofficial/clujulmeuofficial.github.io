@@ -1,2 +1,2 @@
 # clujulmeu
-Websit-eul official Clujul meu.
+Website-ul official Clujul meu.
