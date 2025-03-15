@@ -2,7 +2,6 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videoclipuri - Clujul Meu</title>
     <style>
         body {
@@ -20,11 +19,11 @@
             min-height: 100vh;
         }
         nav {
-            background: linear-gradient(90deg, #800000, #ff5733);
+            background: linear-gradient(90deg, #800000, #ff5733); /* Updated gradient */
             padding: 15px;
             text-align: center;
-            position: sticky;
-            top: 0;
+            position: relative; /* Changed from sticky to relative */
+            top: 0; /* Ensure it stays at the top */
             z-index: 1000;
             width: 100%;
         }
@@ -33,6 +32,19 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            padding: 10px 20px; /* Added padding for box effect */
+            border: 2px solid white; /* Added border for box */
+            border-radius: 5px; /* Rounded corners */
+            display: inline-block; /* Ensure box effect */
+            transition: background 0.3s, color 0.3s; /* Smooth transition */
+        }
+        nav a:hover {
+            background: white; /* Turn white on hover */
+            color: #333; /* Change text color to dark */
+        }
+        nav a:active {
+            background: yellow; /* Turn yellow when pressed */
+            color: #333; /* Keep text color dark */
         }
         nav, .container, footer {
             opacity: 0;
@@ -42,14 +54,32 @@
             padding: 40px;
             text-align: center;
         }
+       
         .video-container {
-            max-width: 800px;
-            margin: auto;
+            max-width: 1200px; /* Further increased max width */
+            margin: 20px auto; /* Add spacing between videos */
+            position: relative; /* For responsive aspect ratio */
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
         }
-        iframe {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 450px;
+            height: 100%;
             border: none;
+        }
+        @media (min-width: 768px) {
+            iframe {
+                height: 720px; /* Further increased height */
+            }
+        }
+        @media (min-width: 1024px) {
+            iframe {
+                max-width: 1200px; /* Further increased max width */
+                height: 720px; /* Further increased height */
+            }
         }
         footer {
             background: linear-gradient(90deg, #333, #555);
@@ -80,16 +110,16 @@
     
     <div class="container">
         <h1>Videoclipurile mele</h1>
-        <p>Toate videoclipurile publicate pe canalul Clujul Meu</p>
+        <p>Cele mai recente clipuri de pe Clujul meu</p>
         
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" allowfullscreen></iframe>
+            <iframe src="https://youtu.be/3rLY3sSWtvE?feature=shared" allowfullscreen></iframe>
         </div>
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+            <iframe src="https://youtu.be/O8o6NlLfQ1w?feature=shared" allowfullscreen></iframe>
         </div>
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
+            <iframe src="https://youtu.be/jwO8UqMLwjM?feature=shared" allowfullscreen></iframe>
         </div>
     </div>
     

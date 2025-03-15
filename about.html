@@ -23,9 +23,6 @@
             background: linear-gradient(90deg, #800000, #ff5733);
             padding: 15px;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
             width: 100%;
         }
         nav a {
@@ -33,14 +30,24 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
         }
-        nav, .container, footer {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+        nav a:hover {
+            background: white;
+            color: #333;
         }
         .container {
             padding: 40px;
             text-align: center;
+        }
+        .container iframe {
+            max-width: 1200px;
+            width: 100%;
+            height: 720px;
+            border: none;
         }
         footer {
             background: linear-gradient(90deg, #333, #555);
@@ -51,13 +58,11 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", () => {
             document.body.style.opacity = 1;
             setTimeout(() => {
-                document.querySelectorAll("nav, .container, footer").forEach(element => {
-                    element.style.opacity = 1;
-                });
-            }, 300); // Delay to ensure body fade completes first
+                document.querySelectorAll("nav, .container, footer").forEach(el => el.style.opacity = 1);
+            }, 300);
         });
     </script>
 </head>

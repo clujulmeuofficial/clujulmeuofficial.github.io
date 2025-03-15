@@ -15,7 +15,7 @@
             transition: opacity 0.5s ease-in-out;
         }
         nav {
-            background: #800000;
+            background: linear-gradient(90deg, #800000, #ff5733); /* Updated gradient */
             padding: 15px;
             text-align: center;
         }
@@ -24,6 +24,19 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            padding: 10px 20px; /* Added padding for box effect */
+            border: 2px solid white; /* Added border for box */
+            border-radius: 5px; /* Rounded corners */
+            display: inline-block; /* Ensure box effect */
+            transition: background 0.3s, color 0.3s; /* Smooth transition */
+        }
+        nav a:hover {
+            background: white; /* Turn white on hover */
+            color: #333; /* Change text color to dark */
+        }
+        nav a:active {
+            background: yellow; /* Turn yellow when pressed */
+            color: #333; /* Keep text color dark */
         }
         .container {
             padding: 40px;
@@ -72,7 +85,7 @@
         
         <h2>Showreel</h2>
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/YOUR_SHOWREEL_VIDEO_ID" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/watch?v=b0f31cFWiII" allowfullscreen></iframe>
         </div>
     </div>
     
