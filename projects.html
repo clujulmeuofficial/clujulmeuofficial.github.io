@@ -51,11 +51,16 @@
             justify-content: center;
         }
         .gallery img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
+            width: 100%; /* Default to full width for small screens */
+            max-width: 200px; /* Limit maximum width */
+            height: auto; /* Maintain aspect ratio */
             border-radius: 10px;
             transition: transform 0.3s;
+        }
+        @media (min-width: 768px) {
+            .gallery img {
+                width: 200px; /* Restore fixed width for tablets and larger screens */
+            }
         }
         .gallery img:hover {
             transform: scale(1.1);

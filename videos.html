@@ -49,9 +49,13 @@
             margin: auto;
         }
         iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
+            width: 100%; /* Full width for small screens */
+            height: auto; /* Maintain aspect ratio */
+        }
+        @media (min-width: 768px) {
+            iframe {
+                height: 450px; /* Restore fixed height for tablets and larger screens */
+            }
         }
         footer {
             background: #333;

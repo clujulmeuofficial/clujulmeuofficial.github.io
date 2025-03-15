@@ -45,12 +45,17 @@
             text-align: center;
         }
         .container p {
-            font-size: 22px; /* Increased font size */
+            font-size: 18px; /* Adjust font size for smaller screens */
             line-height: 1.4; /* Reduced line spacing for compactness */
             max-width: 600px; /* Restrict width for column-like appearance */
             margin: 0 auto; /* Center the text horizontally */
             padding: 0 10px; /* Adjust padding to move closer to edges */
             font-weight: bold; /* Make text bold */
+        }
+        @media (min-width: 768px) {
+            .container p {
+                font-size: 22px; /* Restore larger font size for tablets and larger screens */
+            }
         }
         .video-container {
             max-width: 800px;
@@ -92,7 +97,7 @@
     <div class="container">
         <h1>Despre mine</h1>
         <p>Salut, sunt Clujul meu. Pe acest canal voi posta videoclipuri din Cluj si din alte zone ale României cu aspectele bune.
-            Fac mai des filmari din drona DJI Mavic Mini 4 Pro care filmeaza 4k dar mai filmez uneori si de la sol. Daca va abonati si distribuiti videoclipurile voi pune mai des videoclipuri pe canal și îmi veti îndeplini un vis de a ajunge la 1000 de abonati :).</p>
+            Fac mai des filmari din drona DJI Mavic Mini 4 Pro care filmeaza 4k dar mai filmez uneori si de la sol. Daca va abonati si distribuiti videoclipurile voi pune mai des videoclipuri pe canal și îmi veti îndeplini un vis de a ajunge la 1000 de abonati.</p>
     </div>
     
     <footer>
