@@ -14,7 +14,8 @@
             padding: 0;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             color: #333;
-            transition: opacity 0.5s ease-in-out;
+            opacity: 0; /* Start with opacity 0 for fade-in effect */
+            transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
         }
         nav {
             background: linear-gradient(90deg, #800000, #ff5733); /* Updated gradient */
@@ -31,6 +32,7 @@
             border-radius: 5px; /* Rounded corners */
             display: inline-block; /* Ensure box effect */
             transition: background 0.3s, color 0.3s; /* Smooth transition */
+            cursor: pointer; /* Ensure pointer cursor for links */
         }
         nav a:hover {
             background: white; /* Turn white on hover */
@@ -46,7 +48,11 @@
         }
         .video-container {
             max-width: 800px;
-            margin: auto;
+            margin: 20px auto;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1); /* Subtle background for videos */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         iframe {
             width: 100%; /* Full width for small screens */
@@ -73,11 +79,29 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.body.style.opacity = 1;
+            document.body.style.opacity = 1; // Trigger fade-in effect
+
+            const links = document.querySelectorAll("nav a");
+            links.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    const href = this.getAttribute("href");
+                    if (href) {
+                        sessionStorage.setItem("fadeIn", "true"); // Set fade-in flag
+                    }
+                });
+            });
+
+            if (sessionStorage.getItem("fadeIn") === "true") {
+                document.body.style.opacity = 0; // Start fade-in effect
+                setTimeout(() => {
+                    document.body.style.opacity = 1; // Complete fade-in effect
+                    sessionStorage.removeItem("fadeIn"); // Clear fade-in flag
+                }, 10); // Small delay to trigger CSS transition
+            }
         });
     </script>
 </head>
-<body style="opacity: 0;">
+<body>
     <nav>
         <a href="index.html">Acasă</a>
         <a href="videos.html">Videoclipuri</a>
