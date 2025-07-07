@@ -49,7 +49,7 @@
         .video-container {
             max-width: 800px;
             margin: 20px auto;
-            padding: 15px;
+            padding: 10px;
             background: rgba(255, 255, 255, 0.1); /* Subtle background for videos */
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -59,6 +59,9 @@
             height: auto; /* Maintain aspect ratio */
         }
         @media (min-width: 768px) {
+            .video-container {
+                padding: 15px;
+            }
             iframe {
                 height: 450px; /* Restore fixed height for tablets and larger screens */
             }

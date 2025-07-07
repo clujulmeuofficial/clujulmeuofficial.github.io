@@ -19,15 +19,19 @@
             transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
         }
         nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             background: linear-gradient(90deg, #800000, #ff5733); /* Updated gradient */
-            padding: 15px;
+            padding: 10px 20px;
             text-align: center;
         }
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
+            margin: 5px;
+            font-size: 16px;
             padding: 10px 20px; /* Added padding for box effect */
             border: 2px solid white; /* Added border for box */
             border-radius: 5px; /* Rounded corners */
@@ -44,20 +48,33 @@
             color: #333; /* Keep text color dark */
         }
         .container {
-            padding: 40px;
+            padding: 20px;
             text-align: center;
         }
+        .container h1 {
+            font-size: 28px;
+        }
         .container p {
-            font-size: 18px; /* Adjust font size for smaller screens */
-            line-height: 1.4; /* Reduced line spacing for compactness */
+            font-size: 16px; /* Adjust font size for smaller screens */
+            line-height: 1.6; /* Reduced line spacing for compactness */
             max-width: 600px; /* Restrict width for column-like appearance */
             margin: 0 auto; /* Center the text horizontally */
             padding: 0 10px; /* Adjust padding to move closer to edges */
             font-weight: bold; /* Make text bold */
         }
         @media (min-width: 768px) {
+            nav a {
+                margin: 0 15px;
+                font-size: 18px;
+            }
+            .container {
+                padding: 40px;
+            }
+            .container h1 {
+                font-size: 36px;
+            }
             .container p {
-                font-size: 22px; /* Restore larger font size for tablets and larger screens */
+                font-size: 18px; /* Restore larger font size for tablets and larger screens */
             }
         }
         .video-container {
