@@ -1,123 +1,66 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="IMdVkzjslbc7-wDGFfliwxxVRjtyqabWV-2X1GCE3Bw" />
-    <meta name='dmca-site-verification' content='bDE1VVlYdmJuN2pRQ003MFl6c1lpeUQ0cGtvM0RSb3JZRkpqQ0ZBWmU4OD01' />
-    <title>Acasă</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            color: #333;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 0; /* Start with opacity 0 for fade-in effect */
-            transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
-        }
-        nav {
-            background: linear-gradient(90deg, #800000, #ff5733); /* Updated gradient */
-            padding: 15px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            padding: 10px 20px; /* Added padding for box effect */
-            border: 2px solid white; /* Added border for box */
-            border-radius: 5px; /* Rounded corners */
-            display: inline-block; /* Ensure box effect */
-            transition: background 0.3s, color 0.3s; /* Smooth transition */
-            cursor: pointer; /* Ensure pointer cursor for links */
-        }
-        nav a:hover {
-            background: white; /* Turn white on hover */
-            color: #333; /* Change text color to dark */
-        }
-        nav a:active {
-            background: yellow; /* Turn yellow when pressed */
-            color: #333; /* Keep text color dark */
-        }
-        .container {
-            padding: 40px;
-            text-align: center;
-        }
-        .video-container {
-            max-width: 800px;
-            margin: auto;
-        }
-        iframe {
-            width: 100%; /* Full width for small screens */
-            height: auto; /* Maintain aspect ratio */
-        }
-        @media (min-width: 768px) {
-            iframe {
-                height: 450px; /* Restore fixed height for tablets and larger screens */
-            }
-        }
-        footer {
-            background: #333;
-            color: white;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-        }
-    </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.style.opacity = 1; // Trigger fade-in effect
-
-            const links = document.querySelectorAll("nav a");
-            links.forEach(link => {
-                link.addEventListener("click", function(event) {
-                    const href = this.getAttribute("href");
-                    if (href) {
-                        sessionStorage.setItem("fadeIn", "true"); // Set fade-in flag
-                    }
-                });
-            });
-
-            if (sessionStorage.getItem("fadeIn") === "true") {
-                document.body.style.opacity = 0; // Start fade-in effect
-                setTimeout(() => {
-                    document.body.style.opacity = 1; // Complete fade-in effect
-                    sessionStorage.removeItem("fadeIn"); // Clear fade-in flag
-                }, 10); // Small delay to trigger CSS transition
-            }
-        });
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clujul Meu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="opacity: 0;">
+<body>
+  <header>
+    <h1>Clujul Meu</h1>
     <nav>
-        <a href="index.html">Acasă</a>
-        <a href="videos.html">Videoclipuri</a>
-        <a href="projects.html">Proiecte</a>
-        <a href="about.html">Despre mine</a>
+      <a href="#despre">Despre</a>
+      <a href="#evolutie">Evoluție</a>
+      <a href="contact.html">Contact</a>
+      <a href="projects.html">Proiecte</a>
     </nav>
-    
-    <div class="container">
-        <h1>Bun venit la Clujul Meu!</h1>
-        <p>Clujul meu website</p>
-        
-        <h2>Showreel</h2>
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/b0f31cFWiII" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <p>If the video does not load, <a href="https://www.youtube.com/watch?v=b0f31cFWiII" target="_blank" rel="noopener noreferrer">click here to watch it on YouTube</a>.</p>
-        </div>
+  </header>
+
+  <section class="hero">
+    <h2>Bine ai venit pe Clujul Meu</h2>
+    <div class="scroll-down">scroll down ↓</div>
+
+  </section>
+
+  <section class="timeline" id="evolutie">
+    <div class="year-block">
+      <div class="year" data-year="2021"></div>
+      <div class="content">
+        <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini. Filmam de plăcere, fără a mă gândi că aș putea posta pe YouTube. Într-o zi am plănuit să merg să filmez în Feleac. După două ore de filmat am ajuns acasă și am descărcat rapid filmările. Am procesat filmările în editorul default din Windows. Atunci mi-a venit ideea să îmi fac un canal de YouTube. M-am gândit rapid la un nume și după aceea am postat primul meu videoclip.</p>
+      </div>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 Clujul Meu | <a href="https://www.youtube.com/@Clujulmeu" target="_blank">YouTube</a> <a href="//www.dmca.com/Protection/Status.aspx?ID=d422dcc8-d426-4b28-9e20-a6c40c38c5cf" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca-badge-w100-5x1-06.png?ID=d422dcc8-d426-4b28-9e20-a6c40c38c5cf"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script> </script></p>
+    <div class="year-block">
+      <div class="year" data-year="2022"></div>
+      <div class="content">
+        <p>Deja am postat primul clip, care a ajuns viral, lucru care m-a motivat să continui să filmez, editez si postez. În acest an am făcut upgrade la DJI Mavic Mini 2, cu care am filmat printr-o mulțime de locuri din Cluj, Maramureș, Năvodari, dar și la construcția Podului Suspendat de la Brăila, clip care a ajuns viral. La finalul anului adunasem deja peste 100 de abonați.</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year" data-year="2023"></div>
+      <div class="content">
+        <p> În acest an am trecut la un editor video nou, de la Movavi Editor Plus 2022 la DaVinci Resolve. Clipurile mele au început să devină din ce în ce mai calitative și profesioniste. Numărul de abonați creștea, iar acest lucra m-a motivat să postez clipuri în continuare. </p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year" data-year="2024"></div>
+      <div class="content">
+        <p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro, o dronă la care visam înainte. Producția video a devenit din ce în ce tot mai bună, imaginea fiind mult mai calitativă. În acest an am filmat pentru prima dată un clip din afara tării, Grecia. Drona aceasta m-a ajutat să strâng tot mai mulți urmăritori și să aduc o experiență tot mai plăcută la clipurile mele(mișcări dinamice).</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year" data-year="2025"></div>
+      <div class="content">
+        <p>Pentru acest an îmi propun să cresc numărul de urmăritori, dar și calitatea clipurilor mele.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

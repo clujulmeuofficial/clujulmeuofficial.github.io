@@ -1,0 +1,208 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #000000, #020d1b);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(80, 120, 255, 0.1), transparent 80%);
+  filter: blur(180px);
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #4fa3ff;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background: url('hero.jpg') center/cover no-repeat;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #020d1b 100%);
+  z-index: 2;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  z-index: 3;
+  position: relative;
+  margin: 0;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 100px;
+  font-size: 1rem;
+  color: white;
+  z-index: 3;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.timeline {
+  padding: 80px 10% 50px 10%;
+  position: relative;
+  background: linear-gradient(to bottom, #020d1b, #040a12);
+  will-change: transform, opacity;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4fa3ff, transparent);
+  z-index: 0;
+}
+
+.year-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 100px 0;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.year-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.year {
+  font-size: 2.5rem;
+  font-weight: 700;
+  flex: 1;
+  color: #4fa3ff;
+}
+
+.content {
+  flex: 2;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 35px;
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 0 60px rgba(0, 90, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 80px rgba(0, 110, 255, 0.5);
+}
+
+.year-block:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 10%;
+  font-size: 0.9rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .year-block {
+    flex-direction: column !important;
+    align-items: flex-start;
+    text-align: left !important;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+}

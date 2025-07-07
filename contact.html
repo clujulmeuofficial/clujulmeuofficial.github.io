@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Clujul Meu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #000000, #0a101c);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 20px 10%;
+      background: rgba(0, 0, 0, .6);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #4fa3ff;
+    }
+    main {
+      flex: 1;
+      padding: 60px 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #4fa3ff;
+    }
+    form {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, .05);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 40px rgba(0, 90, 255, .2);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      background: #111827;
+      color: #fff;
+      font-size: 1rem;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(79, 163, 255, .6);
+    }
+    button {
+      background: #4fa3ff;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    button:hover {
+      background: #3c8de2;
+    }
+    #statusMsg {
+      margin-top: 10px;
+      font-size: .9rem;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: .8rem;
+      background: rgba(0, 0, 0, .5);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body>
+
+<header>Contactează-ne</header>
+
+<main>
+  <h2>Trimite un mesaj</h2>
+  <form id="contactForm">
+    <label for="name">Nume</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Mesaj</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Trimite</button>
+    <div id="statusMsg"></div>
+  </form>
+</main>
+
+<footer>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</footer>
+
+<script>
+  const BACKEND_URL = "https://clujulmeu-email.onrender.com/send-email";
+
+  const form = document.getElementById("contactForm");
+  const statusMsg = document.getElementById("statusMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusMsg.textContent = "Se trimite…";
+    statusMsg.style.color = "#4fa3ff";
+
+    const body = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+
+    try {
+      const res = await fetch(BACKEND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      const data = await res.json();
+      console.log("Răspuns server:", data);
+
+      if (data.success) {
+        statusMsg.textContent = "Mesaj trimis cu succes!";
+        statusMsg.style.color = "lime";
+        form.reset();
+      } else {
+        statusMsg.textContent = "A apărut o eroare. Încearcă din nou.";
+        statusMsg.style.color = "red";
+      }
+    } catch (err) {
+      console.error(err);
+      statusMsg.textContent = "Nu s-a putut trimite mesajul.";
+      statusMsg.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>
