@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Clujul Meu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <meta property="og:site_name" content="Clujul meu" />
   <meta name="description" content="Website Official Clujul meu">
   <meta name="keywords" content="Cluj meu, producție video, filmări Cluj, documentar, videograf, servicii video, Clujul meu youtube, Clujul meu video">
   <meta name="author" content="Clujul meu">
-  <link id="favicon" rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="favicon.png" type="image/png" />
 
   <style>
     body {
@@ -48,11 +47,17 @@
     .hero h2 {
       z-index: 2;
       font-size: 3rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
     }
 
     .scroll-down {
       z-index: 2;
       margin-top: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
     }
 
     .video-wrapper {
@@ -61,14 +66,19 @@
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
       z-index: 0;
+      overflow: hidden;
     }
 
     .video-wrapper iframe {
-      width: 100vw;
-      height: 100vh;
+      position: absolute;
+      top: -20%;
+      left: 0;
+      width: 200%;
+      height: 140%;
       pointer-events: none;
+      opacity: 0.3;
+      filter: blur(1px);
     }
 
     .timeline {
@@ -77,16 +87,18 @@
     }
 
     .year-block {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
 
     .year {
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: 2rem;
+      color: #00bcd4;
     }
 
     .content {
       margin-top: 0.5rem;
+      font-size: 1.1rem;
     }
 
     footer {
@@ -110,7 +122,7 @@
 
   <section class="hero">
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&controls=0&loop=1&playlist=VIDEO_ID"
+      <iframe src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&controls=0&loop=1&playlist=b0f31cFWiII&modestbranding=1&showinfo=0"
               frameborder="0"
               allow="autoplay; encrypted-media"
               allowfullscreen>
@@ -122,33 +134,37 @@
 
   <section class="timeline" id="evolutie">
     <div class="year-block">
-      <div class="year" data-year="2021">2021</div>
+      <div class="year" data-year="2021">2018</div>
       <div class="content">
-        <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini...</p>
+        <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini, și am început să explorez Clujul de sus. A fost momentul în care a început pasiunea mea pentru imaginea aeriană.</p>
       </div>
     </div>
+
     <div class="year-block">
-      <div class="year" data-year="2022">2022</div>
+      <div class="year" data-year="2022">2018</div>
       <div class="content">
-        <p>Deja am postat primul clip, care a ajuns viral...</p>
+        <p>Deja am postat primul clip, care a ajuns viral. Acest lucru m-a încurajat să continui și să investesc în abilitățile mele de editare și filmare.</p>
       </div>
     </div>
+
     <div class="year-block">
-      <div class="year" data-year="2023">2023</div>
+      <div class="year" data-year="2023">2018</div>
       <div class="content">
-        <p>În acest an am trecut la un editor video nou...</p>
+        <p>În acest an am trecut la un editor video nou, ceea ce mi-a permis să creez clipuri mai cinematice. Comunitatea a început să crească semnificativ.</p>
       </div>
     </div>
+
     <div class="year-block">
-      <div class="year" data-year="2024">2024</div>
+      <div class="year" data-year="2024">2018</div>
       <div class="content">
-        <p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro...</p>
+        <p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro și am început să colaborez cu alte proiecte locale. Vizualurile au ajuns la un nou nivel de calitate.</p>
       </div>
     </div>
+
     <div class="year-block">
-      <div class="year" data-year="2025">2025</div>
+      <div class="year" data-year="2025">2018</div>
       <div class="content">
-        <p>Pentru acest an îmi propun să cresc numărul de urmăritori...</p>
+        <p>Pentru acest an îmi propun să cresc numărul de urmăritori și să lansez primul meu documentar complet despre Cluj-Napoca. Planurile sunt ambițioase și abia aștept să le pun în practică.</p>
       </div>
     </div>
   </section>
@@ -157,6 +173,32 @@
     <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Animate year count-up
+    document.addEventListener("DOMContentLoaded", () => {
+      const years = document.querySelectorAll(".year");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute("data-year"));
+            let count = 2018;
+            const step = () => {
+              el.textContent = count;
+              if (count < target) {
+                count++;
+                setTimeout(step, 30); // Speed of count-up
+              }
+            };
+            step();
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      years.forEach(year => observer.observe(year));
+    });
+  </script>
 </body>
 </html>
