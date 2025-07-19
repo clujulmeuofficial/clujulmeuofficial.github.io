@@ -2,88 +2,95 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clujul Meu</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <meta property="og:site_name" content="Clujul meu" />
-  <meta name="description" content="Website Official Clujul meu">
-  <meta name="keywords" content="Cluj meu, producție video, filmări Cluj, documentar, videograf, servicii video, Clujul meu youtube, Clujul meu video">
-  <meta name="author" content="Clujul meu">
-  <link rel="icon" href="favicon.png" type="image/png" />
-
+  <meta name="description" content="Website-ul oficial Clujul Meu - platforma care documentează evoluția proiectelor video din Cluj-Napoca din 2018 până în prezent." />
+  <meta name="keywords" content="Clujul Meu, producție video, filmări Cluj, documentar, videograf, servicii video profesionale, Clujul Meu YouTube, editare video" />
+  <meta name="author" content="Clujul Meu" />
+  <link id="favicon" rel="icon" href="favicon.png" type="image/png" />
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #000;
       color: white;
+      background-color: black;
     }
 
     header {
       position: relative;
       z-index: 2;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 1rem;
+      padding: 20px;
+      text-align: center;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
       margin: 0 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
     }
 
     .hero {
       position: relative;
       height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      text-align: center;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero h2 {
-      z-index: 2;
       font-size: 3rem;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 1rem 2rem;
-      border-radius: 10px;
+      text-align: center;
+      z-index: 2;
     }
 
     .scroll-down {
+      margin-top: 1rem;
+      font-size: 1rem;
       z-index: 2;
-      margin-top: 20px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
     }
 
-    .video-wrapper {
-      position: absolute;
+    .video-background {
+      position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .video-wrapper iframe {
+    .video-background iframe {
       position: absolute;
-      top: -20%;
+      top: 50%;
+      left: 50%;
+      width: 177.77vh;
+      height: 100vh;
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
       left: 0;
-      width: 200%;
-      height: 140%;
-      pointer-events: none;
-      opacity: 0.3;
-      filter: blur(1px);
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1;
     }
 
     .timeline {
-      padding: 4rem 2rem;
-      background-color: #111;
+      padding: 4rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 2;
+      position: relative;
     }
 
     .year-block {
@@ -91,25 +98,33 @@
     }
 
     .year {
-      font-weight: bold;
       font-size: 2rem;
-      color: #00bcd4;
-    }
-
-    .content {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      background-color: #000;
-      color: white;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-background">
+    <iframe
+      src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&loop=1&playlist=b0f31cFWiII&controls=0&showinfo=0&modestbranding=1"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="video-overlay"></div>
+
+  <!-- HEADER -->
   <header>
     <h1>Clujul Meu</h1>
     <nav>
@@ -120,84 +135,70 @@
     </nav>
   </header>
 
+  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&controls=0&loop=1&playlist=b0f31cFWiII&modestbranding=1&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen>
-      </iframe>
-    </div>
     <h2>Bine ai venit pe Clujul Meu</h2>
     <div class="scroll-down">scroll down ↓</div>
   </section>
 
+  <!-- TIMELINE SECTION -->
   <section class="timeline" id="evolutie">
     <div class="year-block">
       <div class="year" data-year="2021">2018</div>
       <div class="content">
-        <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini, și am început să explorez Clujul de sus. A fost momentul în care a început pasiunea mea pentru imaginea aeriană.</p>
+        <p>A fost anul în care am descoperit pentru prima dată pasiunea pentru imagine, film și editare. Cu un simplu telefon și multă curiozitate, am început să documentez orașul Cluj-Napoca așa cum îl vedeam eu.</p>
       </div>
     </div>
-
     <div class="year-block">
-      <div class="year" data-year="2022">2018</div>
+      <div class="year" data-year="2021">2021</div>
       <div class="content">
-        <p>Deja am postat primul clip, care a ajuns viral. Acest lucru m-a încurajat să continui și să investesc în abilitățile mele de editare și filmare.</p>
+        <p>Mi-am achiziționat prima mea dronă, un DJI Mavic Mini. Filmam din pasiune și experimentam cadre aeriene spectaculoase fără intenția de a publica conținut online.</p>
       </div>
     </div>
-
     <div class="year-block">
-      <div class="year" data-year="2023">2018</div>
+      <div class="year" data-year="2022">2022</div>
       <div class="content">
-        <p>În acest an am trecut la un editor video nou, ceea ce mi-a permis să creez clipuri mai cinematice. Comunitatea a început să crească semnificativ.</p>
+        <p>Am postat primul clip pe YouTube, care a avut un succes neașteptat. Acest moment m-a impulsionat să continui și să dezvolt proiectul Clujul Meu.</p>
       </div>
     </div>
-
     <div class="year-block">
-      <div class="year" data-year="2024">2018</div>
+      <div class="year" data-year="2023">2023</div>
       <div class="content">
-        <p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro și am început să colaborez cu alte proiecte locale. Vizualurile au ajuns la un nou nivel de calitate.</p>
+        <p>Am trecut de la Movavi Editor Plus la DaVinci Resolve, crescând semnificativ calitatea montajelor. Am început să abordez documentare locale mai bine structurate.</p>
       </div>
     </div>
-
     <div class="year-block">
-      <div class="year" data-year="2025">2018</div>
+      <div class="year" data-year="2024">2024</div>
       <div class="content">
-        <p>Pentru acest an îmi propun să cresc numărul de urmăritori și să lansez primul meu documentar complet despre Cluj-Napoca. Planurile sunt ambițioase și abia aștept să le pun în practică.</p>
+        <p>În acest an am trecut la DJI Mini 4 Pro, o dronă performantă care m-a ajutat să surprind Clujul din perspective mult mai spectaculoase și stabile.</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year" data-year="2025">2025</div>
+      <div class="content">
+        <p>Planurile mele pentru 2025 sunt ambițioase: mai multe colaborări, producții documentare complexe și atingerea unui public tot mai larg prin Clujul Meu.</p>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
   </footer>
 
+  <!-- COUNT-UP SCRIPT -->
   <script>
-    // Animate year count-up
     document.addEventListener("DOMContentLoaded", () => {
       const years = document.querySelectorAll(".year");
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute("data-year"));
-            let count = 2018;
-            const step = () => {
-              el.textContent = count;
-              if (count < target) {
-                count++;
-                setTimeout(step, 30); // Speed of count-up
-              }
-            };
-            step();
-            observer.unobserve(el);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      years.forEach(year => observer.observe(year));
+      years.forEach((el) => {
+        const target = parseInt(el.dataset.year);
+        let count = 2018;
+        const interval = setInterval(() => {
+          el.textContent = count;
+          if (count === target) clearInterval(interval);
+          count++;
+        }, 100);
+      });
     });
   </script>
 </body>
