@@ -1,18 +1,130 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clujul Meu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-<meta property="og:site_name" content="Clujul meu" />
-    <meta name="description" content="Website Official Clujul meu">
-  <meta name="keywords" content="Cluj meu, producție video, filmări Cluj, documentar, videograf, servicii video, Clujul meu youtube, Clujul meu video">
-  <meta name="author" content="Clujul meu">
-<link id="favicon" rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <meta property="og:site_name" content="Clujul meu" />
+  <meta name="description" content="Website Official Clujul meu" />
+  <meta name="keywords" content="Cluj meu, producție video, filmări Cluj, documentar, videograf, servicii video, Clujul meu youtube, Clujul meu video" />
+  <meta name="author" content="Clujul meu" />
+  <link id="favicon" rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .scroll-down {
+      margin-top: 1rem;
+      font-size: 1rem;
+      z-index: 2;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-background iframe {
+      width: 177.77vh; /* 100 * 16 / 9 */
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .timeline {
+      padding: 4rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 2;
+      position: relative;
+    }
+
+    .year-block {
+      margin-bottom: 3rem;
+    }
+
+    .year {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 <body>
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-background">
+    <iframe
+      src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&loop=1&playlist=b0f31cFWiII&controls=0&showinfo=0&modestbranding=1"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="video-overlay"></div>
+
+  <!-- HEADER -->
   <header>
     <h1>Clujul Meu</h1>
     <nav>
@@ -23,45 +135,47 @@
     </nav>
   </header>
 
+  <!-- HERO SECTION -->
   <section class="hero">
     <h2>Bine ai venit pe Clujul Meu</h2>
     <div class="scroll-down">scroll down ↓</div>
-
   </section>
 
+  <!-- TIMELINE SECTION -->
   <section class="timeline" id="evolutie">
     <div class="year-block">
-      <div class="year" data-year="2021"></div>
+      <div class="year" data-year="2021">2021</div>
       <div class="content">
         <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini. Filmam de plăcere, fără a mă gândi că aș putea posta pe YouTube. Într-o zi am plănuit să merg să filmez în Feleac. După două ore de filmat am ajuns acasă și am descărcat rapid filmările. Am procesat filmările în editorul default din Windows. Atunci mi-a venit ideea să îmi fac un canal de YouTube. M-am gândit rapid la un nume și după aceea am postat primul meu videoclip.</p>
       </div>
     </div>
     <div class="year-block">
-      <div class="year" data-year="2022"></div>
+      <div class="year" data-year="2022">2022</div>
       <div class="content">
         <p>Deja am postat primul clip, care a ajuns viral, lucru care m-a motivat să continui să filmez, editez si postez. În acest an am făcut upgrade la DJI Mavic Mini 2, cu care am filmat printr-o mulțime de locuri din Cluj, Maramureș, Năvodari, dar și la construcția Podului Suspendat de la Brăila, clip care a ajuns viral. La finalul anului adunasem deja peste 100 de abonați.</p>
       </div>
     </div>
     <div class="year-block">
-      <div class="year" data-year="2023"></div>
+      <div class="year" data-year="2023">2023</div>
       <div class="content">
-        <p> În acest an am trecut la un editor video nou, de la Movavi Editor Plus 2022 la DaVinci Resolve. Clipurile mele au început să devină din ce în ce mai calitative și profesioniste. Numărul de abonați creștea, iar acest lucra m-a motivat să postez clipuri în continuare. </p>
+        <p>În acest an am trecut la un editor video nou, de la Movavi Editor Plus 2022 la DaVinci Resolve. Clipurile mele au început să devină din ce în ce mai calitative și profesioniste. Numărul de abonați creștea, iar acest lucra m-a motivat să postez clipuri în continuare.</p>
       </div>
     </div>
     <div class="year-block">
-      <div class="year" data-year="2024"></div>
+      <div class="year" data-year="2024">2024</div>
       <div class="content">
         <p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro, o dronă la care visam înainte. Producția video a devenit din ce în ce tot mai bună, imaginea fiind mult mai calitativă. În acest an am filmat pentru prima dată un clip din afara tării, Grecia. Drona aceasta m-a ajutat să strâng tot mai mulți urmăritori și să aduc o experiență tot mai plăcută la clipurile mele(mișcări dinamice).</p>
       </div>
     </div>
     <div class="year-block">
-      <div class="year" data-year="2025"></div>
+      <div class="year" data-year="2025">2025</div>
       <div class="content">
         <p>Pentru acest an îmi propun să cresc numărul de urmăritori, dar și calitatea clipurilor mele.</p>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
   </footer>
