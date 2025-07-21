@@ -86,6 +86,20 @@
       z-index: 1;
     }
 
+    .sound-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 3;
+    }
+
     .timeline {
       padding: 4rem 1rem;
       max-width: 900px;
@@ -117,13 +131,17 @@
   <!-- VIDEO BACKGROUND -->
   <div class="video-background">
     <iframe
-      src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&loop=1&playlist=b0f31cFWiII&controls=0&showinfo=0&modestbranding=1"
+      id="bg-video"
+      src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&loop=1&playlist=b0f31cFWiII&controls=0&showinfo=0&modestbranding=1&vq=hd1080"
       frameborder="0"
       allow="autoplay; fullscreen"
       allowfullscreen
     ></iframe>
   </div>
   <div class="video-overlay"></div>
+
+  <!-- SOUND BUTTON -->
+  <button class="sound-btn" id="soundToggle">🔊 Sunet</button>
 
   <!-- HEADER -->
   <header>
@@ -145,12 +163,11 @@
   <!-- TIMELINE SECTION -->
   <section class="timeline" id="evolutie">
     <div class="year-block">
-      <div class="year" data-year="2021">2018</div>
+      <div class="year" data-year="2018">2018</div>
       <div class="content">
         <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini. Filmam de plăcere, fără a mă gândi că aș putea posta pe YouTube. Într-o zi am plănuit să merg să filmez în Feleac. După două ore de filmat am ajuns acasă și am descărcat rapid filmările. Am procesat filmările în editorul default din Windows. Atunci mi-a venit ideea să îmi fac un canal de YouTube. M-am gândit rapid la un nume și după aceea am postat primul meu videoclip.</p>
       </div>
     </div>
-
     <div class="year-block">
       <div class="year" data-year="2022">2022</div>
       <div class="content">
@@ -182,7 +199,7 @@
     <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
   </footer>
 
-  <!-- COUNT-UP SCRIPT OPTIMIZAT -->
+  <!-- JS: COUNT-UP + SOUND -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const years = document.querySelectorAll(".year");
@@ -190,7 +207,7 @@
       years.forEach((el) => {
         const target = parseInt(el.dataset.year);
         const start = 2018;
-        const duration = 800; // in ms
+        const duration = 800;
         let startTime = null;
 
         const animateCount = (timestamp) => {
@@ -207,6 +224,19 @@
         };
 
         requestAnimationFrame(animateCount);
+      });
+
+      // SUNET VIDEO (cu foarte mic volum)
+      const soundBtn = document.getElementById("soundToggle");
+      const iframe = document.getElementById("bg-video");
+
+      soundBtn.addEventListener("click", () => {
+        const src = iframe.src;
+        if (src.includes("mute=1")) {
+          iframe.src = src.replace("mute=1", "mute=0") + "&volume=5";
+        }
+        soundBtn.disabled = true;
+        soundBtn.textContent = "🔈 Sunet pornit";
       });
     });
   </script>
