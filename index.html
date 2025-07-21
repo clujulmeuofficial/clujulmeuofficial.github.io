@@ -5,57 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clujul Meu</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <meta property="og:site_name" content="Clujul meu" />
-  <meta name="description" content="Website-ul oficial Clujul Meu - platforma care documentează evoluția proiectelor video din Cluj-Napoca din 2018 până în prezent." />
-  <meta name="keywords" content="Clujul Meu, producție video, filmări Cluj, documentar, videograf, servicii video profesionale, Clujul Meu YouTube, editare video" />
-  <meta name="author" content="Clujul Meu" />
-  <link id="favicon" rel="icon" href="favicon.png" type="image/png" />
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      color: white;
       background-color: black;
+      color: white;
       scroll-behavior: smooth;
     }
-
     header {
-      position: relative;
-      z-index: 2;
       padding: 20px;
       text-align: center;
     }
-
     nav a {
       margin: 0 10px;
-      text-decoration: none;
       color: white;
+      text-decoration: none;
       font-weight: 600;
     }
-
     .hero {
-      position: relative;
       height: 100vh;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 2;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
       text-align: center;
-      z-index: 2;
     }
-
     .scroll-down {
       margin-top: 1rem;
-      font-size: 1rem;
-      z-index: 2;
     }
-
     .video-background {
       position: fixed;
       top: 0;
@@ -63,10 +41,9 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      z-index: 0;
+      z-index: -2;
       pointer-events: none;
     }
-
     .video-background iframe {
       position: absolute;
       top: 50%;
@@ -75,170 +52,158 @@
       height: 100vh;
       transform: translate(-50%, -50%) scale(1.5);
     }
-
     .video-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 1;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
     }
-
-    .sound-btn {
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
+    }
+    .year-block {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .year-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .year {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .sound-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: none;
+      background: rgba(255,255,255,0.1);
       color: white;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.9rem;
+      padding: 8px 14px;
+      border: 1px solid white;
+      border-radius: 4px;
       cursor: pointer;
-      z-index: 3;
-    }
-
-    .timeline {
-      padding: 4rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-      z-index: 2;
-      position: relative;
-    }
-
-    .year-block {
-      margin-bottom: 3rem;
-    }
-
-    .year {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.6);
-      position: relative;
-      z-index: 2;
+      font-size: 0.9rem;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
-  <!-- VIDEO BACKGROUND -->
-  <div class="video-background">
-    <iframe
-      id="bg-video"
-      src="https://www.youtube.com/embed/b0f31cFWiII?autoplay=1&mute=1&loop=1&playlist=b0f31cFWiII&controls=0&showinfo=0&modestbranding=1&vq=hd1080"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen
-    ></iframe>
-  </div>
-  <div class="video-overlay"></div>
 
-  <!-- SOUND BUTTON -->
-  <button class="sound-btn" id="soundToggle">🔊 Sunet</button>
+<div class="video-background">
+  <div id="player"></div>
+</div>
+<div class="video-overlay"></div>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Clujul Meu</h1>
-    <nav>
-      <a href="#despre">Despre</a>
-      <a href="#evolutie">Evoluție</a>
-      <a href="contact.html">Contact</a>
-      <a href="projects.html">Proiecte</a>
-    </nav>
-  </header>
+<!-- SOUND CONTROL -->
+<button class="sound-toggle" onclick="toggleSound()">🔈 Pornește sunet</button>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h2>Bine ai venit pe Clujul Meu</h2>
-    <div class="scroll-down">scroll down ↓</div>
-  </section>
+<!-- HEADER -->
+<header>
+  <h1>Clujul Meu</h1>
+  <nav>
+    <a href="#despre">Despre</a>
+    <a href="#evolutie">Evoluție</a>
+    <a href="contact.html">Contact</a>
+    <a href="projects.html">Proiecte</a>
+  </nav>
+</header>
 
-  <!-- TIMELINE SECTION -->
-  <section class="timeline" id="evolutie">
-    <div class="year-block">
-      <div class="year" data-year="2021">2021</div>
-      <div class="content">
-        <p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini. Filmam de plăcere, fără a mă gândi că aș putea posta pe YouTube. Într-o zi am plănuit să merg să filmez în Feleac. După două ore de filmat am ajuns acasă și am descărcat rapid filmările. Am procesat filmările în editorul default din Windows. Atunci mi-a venit ideea să îmi fac un canal de YouTube. M-am gândit rapid la un nume și după aceea am postat primul meu videoclip.</p>
-      </div>
-    </div>
-    <div class="year-block">
-      <div class="year" data-year="2022">2022</div>
-      <div class="content">
-        <p>Deja am postat primul clip, care a ajuns viral, lucru care m-a motivat să continui să filmez, editez si postez. În acest an am făcut upgrade la DJI Mavic Mini 2, cu care am filmat printr-o mulțime de locuri din Cluj, Maramureș, Năvodari, dar și la construcția Podului Suspendat de la Brăila, clip care a ajuns viral. La finalul anului adunasem deja peste 100 de abonați.</p>
-      </div>
-    </div>
-    <div class="year-block">
-      <div class="year" data-year="2023">2023</div>
-      <div class="content">
-        <p>În acest an am trecut la un editor video nou, de la Movavi Editor Plus 2022 la DaVinci Resolve. Clipurile mele au început să devină din ce în ce mai calitative și profesioniste. Numărul de abonați creștea, iar acest lucra m-a motivat să postez clipuri în continuare.</p>
-      </div>
-    </div>
-    <div class="year-block">
-      <div class="year" data-year="2024">2024</div>
-      <div class="content">
-        <p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro, o dronă la care visam înainte. Producția video a devenit din ce în ce tot mai bună, imaginea fiind mult mai calitativă. În acest an am filmat pentru prima dată un clip din afara tării, Grecia. Drona aceasta m-a ajutat să strâng tot mai mulți urmăritori și să aduc o experiență tot mai plăcută la clipurile mele (mișcări dinamice).</p>
-      </div>
-    </div>
-    <div class="year-block">
-      <div class="year" data-year="2025">2025</div>
-      <div class="content">
-        <p>Pentru acest an îmi propun să cresc numărul de urmăritori, dar și calitatea clipurilor mele.</p>
-      </div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <h2>Bine ai venit pe Clujul Meu</h2>
+  <div class="scroll-down"><a href="#evolutie" style="color:white;">scroll down ↓</a></div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
-  </footer>
+<!-- TIMELINE -->
+<section class="timeline" id="evolutie">
+  <div class="year-block"><div class="year">2021</div><p>În acest an, mi-am achiziționat prima mea dronă, un DJI Mavic Mini. Filmam de plăcere, fără a mă gândi că aș putea posta pe YouTube. Într-o zi am plănuit să merg să filmez în Feleac. După două ore de filmat am ajuns acasă și am descărcat rapid filmările. Am procesat filmările în editorul default din Windows. Atunci mi-a venit ideea să îmi fac un canal de YouTube. M-am gândit rapid la un nume și după aceea am postat primul meu videoclip.</p></div>
+  <div class="year-block"><div class="year">2022</div><p>Deja am postat primul clip, care a ajuns viral, lucru care m-a motivat să continui să filmez, editez si postez. În acest an am făcut upgrade la DJI Mavic Mini 2, cu care am filmat printr-o mulțime de locuri din Cluj, Maramureș, Năvodari, dar și la construcția Podului Suspendat de la Brăila, clip care a ajuns viral. La finalul anului adunasem deja peste 100 de abonați.</p></div>
+  <div class="year-block"><div class="year">2023</div><p>În acest an am trecut la un editor video nou, de la Movavi Editor Plus 2022 la DaVinci Resolve. Clipurile mele au început să devină din ce în ce mai calitative și profesioniste. Numărul de abonați creștea, iar acest lucra m-a motivat să postez clipuri în continuare. </p></div>
+  <div class="year-block"><div class="year">2024</div><p>În 2024 am făcut upgrade la DJI Mavic Mini 4 Pro, o dronă la care visam înainte. Producția video a devenit din ce în ce tot mai bună, imaginea fiind mult mai calitativă. În acest an am filmat pentru prima dată un clip din afara tării, Grecia. Drona aceasta m-a ajutat să strâng tot mai mulți urmăritori și să aduc o experiență tot mai plăcută la clipurile mele(mișcări dinamice).</p></div>
+ <div class="year-block"><div class="year">2025</div><p>Pentru acest an îmi propun să cresc numărul de urmăritori, dar și calitatea clipurilor mele.</p></div>  
+</section>
 
-  <!-- JS: COUNT-UP + SOUND -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const years = document.querySelectorAll(".year");
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Clujul Meu
+</footer>
 
-      years.forEach((el) => {
-        const target = parseInt(el.dataset.year);
-        const start = 2018;
-        const duration = 800;
-        let startTime = null;
+<!-- SCRIPTS -->
+<script>
+  let player;
+  let isMuted = true;
 
-        const animateCount = (timestamp) => {
-          if (!startTime) startTime = timestamp;
-          const progress = timestamp - startTime;
-          const rate = Math.min(progress / duration, 1);
-          const current = Math.floor(start + (target - start) * rate);
-          el.textContent = current;
-          if (rate < 1) {
-            requestAnimationFrame(animateCount);
-          } else {
-            el.textContent = target;
-          }
-        };
-
-        requestAnimationFrame(animateCount);
-      });
-
-      // SUNET VIDEO (cu foarte mic volum)
-      const soundBtn = document.getElementById("soundToggle");
-      const iframe = document.getElementById("bg-video");
-
-      soundBtn.addEventListener("click", () => {
-        const src = iframe.src;
-        if (src.includes("mute=1")) {
-          iframe.src = src.replace("mute=1", "mute=0") + "&volume=5";
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: 'S4wKoZyGnC0',
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        mute: 1,
+        loop: 1,
+        playlist: 'S4wKoZyGnC0',
+        modestbranding: 1,
+        showinfo: 0,
+        rel: 0,
+        fs: 0
+      },
+      events: {
+        onReady: function (event) {
+          event.target.setVolume(10); // 10% volum inițial
+          event.target.playVideo();
         }
-        soundBtn.disabled = true;
-        soundBtn.textContent = "🔈 Sunet pornit";
-      });
+      }
     });
-  </script>
+  }
+
+  function toggleSound() {
+    if (!player) return;
+    if (isMuted) {
+      player.unMute();
+      player.setVolume(20); // Volum la 20%
+      document.querySelector('.sound-toggle').innerText = '🔇 Oprește sunet';
+    } else {
+      player.mute();
+      document.querySelector('.sound-toggle').innerText = '🔈 Pornește sunet';
+    }
+    isMuted = !isMuted;
+  }
+
+  // Fade-in pe scroll
+  function handleScrollFade() {
+    const blocks = document.querySelectorAll('.year-block');
+    const triggerBottom = window.innerHeight * 0.9;
+
+    blocks.forEach(block => {
+      const top = block.getBoundingClientRect().top;
+      if (top < triggerBottom) block.classList.add('visible');
+    });
+  }
+
+  window.addEventListener('scroll', handleScrollFade);
+  window.addEventListener('load', handleScrollFade);
+
+  // Scroll lin cu fade
+  document.querySelector('.scroll-down a').addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector('#evolutie');
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // YouTube API
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+</script>
+
 </body>
 </html>
